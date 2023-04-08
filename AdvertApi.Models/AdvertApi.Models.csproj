@@ -10,6 +10,7 @@
     <Product>FEA.Web.Advert.Microservices</Product>
     <PackageProjectUrl>https://github.com/furkanemrea/WebAdvert.AdvertApi</PackageProjectUrl>
     <RepositoryUrl>https://github.com/furkanemrea/WebAdvert.AdvertApi</RepositoryUrl>
+    <PackageId>Fea.Advert.Api.Models</PackageId>
   </PropertyGroup>
 
   <ItemGroup>
