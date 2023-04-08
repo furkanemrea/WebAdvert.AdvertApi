@@ -1,6 +1,8 @@
+using AdvertApi.HealthChecks;
 using AdvertApi.Services.Abstract;
 using AdvertApi.Services.Concrete;
 using AdvertApi.Services.Concrete.Configuration;
+using Amazon.DynamoDBv2;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,16 +17,19 @@ builder.Services.AddSwaggerGen();
 
 builder.Services.AddTransient<IAdvertStorageService, DynamoDBAdvertStorageService>();
 
+builder.Services.AddScoped<AmazonDynamoDBClient>();
+
 builder.Services.AddAutoMapper(Assembly.GetAssembly(typeof(AdvertProfile)));
+
+builder.Services.AddHealthChecks().AddCheck<StorageHealthCheck>("Storage");
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
+app.UseSwagger();
+app.UseSwaggerUI();
+
+app.UseHealthChecks("/health");
+
 
 app.UseHttpsRedirection();
 

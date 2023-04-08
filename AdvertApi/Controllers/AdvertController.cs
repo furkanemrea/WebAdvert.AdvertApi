@@ -60,7 +60,6 @@ namespace AdvertApi.Controllers
             }
 
             return new OkResult();
-        }           
-
+        }
     }
 }

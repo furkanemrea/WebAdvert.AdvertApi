@@ -16,4 +16,8 @@
     <ProjectReference Include="..\AdvertApi.Models\AdvertApi.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="HealthChecks\Abstraction\" />
+  </ItemGroup>
+
 </Project>
